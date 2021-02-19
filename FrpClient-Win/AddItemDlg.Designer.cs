@@ -49,6 +49,12 @@
             this.CancelAdd = new System.Windows.Forms.Button();
             this.DeleteItem = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.InputAddSK = new System.Windows.Forms.TextBox();
+            this.AddSK = new System.Windows.Forms.Label();
+            this.AddRole = new System.Windows.Forms.Label();
+            this.InputAddServerName = new System.Windows.Forms.TextBox();
+            this.AddServerNmae = new System.Windows.Forms.Label();
+            this.CheckAddRoleVisitor = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +70,7 @@
             // AddLoaclPort
             // 
             this.AddLoaclPort.AutoSize = true;
-            this.AddLoaclPort.Location = new System.Drawing.Point(41, 56);
+            this.AddLoaclPort.Location = new System.Drawing.Point(41, 54);
             this.AddLoaclPort.Name = "AddLoaclPort";
             this.AddLoaclPort.Size = new System.Drawing.Size(53, 12);
             this.AddLoaclPort.TabIndex = 1;
@@ -73,7 +79,7 @@
             // AddLoaclIP
             // 
             this.AddLoaclIP.AutoSize = true;
-            this.AddLoaclIP.Location = new System.Drawing.Point(53, 87);
+            this.AddLoaclIP.Location = new System.Drawing.Point(53, 83);
             this.AddLoaclIP.Name = "AddLoaclIP";
             this.AddLoaclIP.Size = new System.Drawing.Size(41, 12);
             this.AddLoaclIP.TabIndex = 2;
@@ -82,7 +88,7 @@
             // AddRemotePort
             // 
             this.AddRemotePort.AutoSize = true;
-            this.AddRemotePort.Location = new System.Drawing.Point(41, 118);
+            this.AddRemotePort.Location = new System.Drawing.Point(41, 112);
             this.AddRemotePort.Name = "AddRemotePort";
             this.AddRemotePort.Size = new System.Drawing.Size(53, 12);
             this.AddRemotePort.TabIndex = 3;
@@ -91,7 +97,7 @@
             // AddDomain
             // 
             this.AddDomain.AutoSize = true;
-            this.AddDomain.Location = new System.Drawing.Point(41, 149);
+            this.AddDomain.Location = new System.Drawing.Point(41, 141);
             this.AddDomain.Name = "AddDomain";
             this.AddDomain.Size = new System.Drawing.Size(53, 12);
             this.AddDomain.TabIndex = 4;
@@ -100,7 +106,7 @@
             // AddSectionName
             // 
             this.AddSectionName.AutoSize = true;
-            this.AddSectionName.Location = new System.Drawing.Point(41, 180);
+            this.AddSectionName.Location = new System.Drawing.Point(41, 240);
             this.AddSectionName.Name = "AddSectionName";
             this.AddSectionName.Size = new System.Drawing.Size(53, 12);
             this.AddSectionName.TabIndex = 5;
@@ -111,6 +117,12 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.CheckAddRoleVisitor);
+            this.groupBox1.Controls.Add(this.InputAddServerName);
+            this.groupBox1.Controls.Add(this.AddServerNmae);
+            this.groupBox1.Controls.Add(this.AddRole);
+            this.groupBox1.Controls.Add(this.InputAddSK);
+            this.groupBox1.Controls.Add(this.AddSK);
             this.groupBox1.Controls.Add(this.AddTranOpt);
             this.groupBox1.Controls.Add(this.CheckAddUseCompression);
             this.groupBox1.Controls.Add(this.CheckAddUseEncryption);
@@ -128,7 +140,7 @@
             this.groupBox1.Controls.Add(this.AddLoaclPort);
             this.groupBox1.Location = new System.Drawing.Point(13, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 238);
+            this.groupBox1.Size = new System.Drawing.Size(366, 303);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条目配置";
@@ -136,7 +148,7 @@
             // AddTranOpt
             // 
             this.AddTranOpt.AutoSize = true;
-            this.AddTranOpt.Location = new System.Drawing.Point(41, 211);
+            this.AddTranOpt.Location = new System.Drawing.Point(41, 274);
             this.AddTranOpt.Name = "AddTranOpt";
             this.AddTranOpt.Size = new System.Drawing.Size(53, 12);
             this.AddTranOpt.TabIndex = 9;
@@ -145,7 +157,7 @@
             // CheckAddUseCompression
             // 
             this.CheckAddUseCompression.AutoSize = true;
-            this.CheckAddUseCompression.Location = new System.Drawing.Point(170, 210);
+            this.CheckAddUseCompression.Location = new System.Drawing.Point(170, 273);
             this.CheckAddUseCompression.Name = "CheckAddUseCompression";
             this.CheckAddUseCompression.Size = new System.Drawing.Size(48, 16);
             this.CheckAddUseCompression.TabIndex = 8;
@@ -155,7 +167,7 @@
             // CheckAddUseEncryption
             // 
             this.CheckAddUseEncryption.AutoSize = true;
-            this.CheckAddUseEncryption.Location = new System.Drawing.Point(116, 210);
+            this.CheckAddUseEncryption.Location = new System.Drawing.Point(116, 273);
             this.CheckAddUseEncryption.Name = "CheckAddUseEncryption";
             this.CheckAddUseEncryption.Size = new System.Drawing.Size(48, 16);
             this.CheckAddUseEncryption.TabIndex = 7;
@@ -169,22 +181,24 @@
             this.InputAddType.FormattingEnabled = true;
             this.InputAddType.Items.AddRange(new object[] {
             "tcp",
+            "stcp",
             "udp",
             "http",
             "https"});
             this.InputAddType.Location = new System.Drawing.Point(116, 22);
             this.InputAddType.Name = "InputAddType";
-            this.InputAddType.Size = new System.Drawing.Size(231, 20);
+            this.InputAddType.Size = new System.Drawing.Size(227, 20);
             this.InputAddType.TabIndex = 6;
+            this.InputAddType.SelectedIndexChanged += new System.EventHandler(this.InputAddType_SelectedIndexChanged);
             // 
             // InputAddSectionName
             // 
             this.InputAddSectionName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InputAddSectionName.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.InputAddSectionName.Location = new System.Drawing.Point(116, 177);
+            this.InputAddSectionName.Location = new System.Drawing.Point(116, 236);
             this.InputAddSectionName.Name = "InputAddSectionName";
-            this.InputAddSectionName.Size = new System.Drawing.Size(231, 21);
+            this.InputAddSectionName.Size = new System.Drawing.Size(227, 21);
             this.InputAddSectionName.TabIndex = 5;
             this.toolTip1.SetToolTip(this.InputAddSectionName, "当端口为范围格式时，将自动补全 range:");
             // 
@@ -192,18 +206,18 @@
             // 
             this.InputAddDomain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputAddDomain.Location = new System.Drawing.Point(116, 146);
+            this.InputAddDomain.Location = new System.Drawing.Point(116, 137);
             this.InputAddDomain.Name = "InputAddDomain";
-            this.InputAddDomain.Size = new System.Drawing.Size(231, 21);
+            this.InputAddDomain.Size = new System.Drawing.Size(227, 21);
             this.InputAddDomain.TabIndex = 4;
             // 
             // InputAddRemotePort
             // 
             this.InputAddRemotePort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputAddRemotePort.Location = new System.Drawing.Point(116, 115);
+            this.InputAddRemotePort.Location = new System.Drawing.Point(116, 108);
             this.InputAddRemotePort.Name = "InputAddRemotePort";
-            this.InputAddRemotePort.Size = new System.Drawing.Size(231, 21);
+            this.InputAddRemotePort.Size = new System.Drawing.Size(227, 21);
             this.InputAddRemotePort.TabIndex = 3;
             this.toolTip1.SetToolTip(this.InputAddRemotePort, "双击填入“本地端口”内容");
             this.InputAddRemotePort.DoubleClick += new System.EventHandler(this.InputAddRemotePort_DoubleClick);
@@ -212,9 +226,9 @@
             // 
             this.InputAddLoaclIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputAddLoaclIP.Location = new System.Drawing.Point(116, 84);
+            this.InputAddLoaclIP.Location = new System.Drawing.Point(116, 79);
             this.InputAddLoaclIP.Name = "InputAddLoaclIP";
-            this.InputAddLoaclIP.Size = new System.Drawing.Size(231, 21);
+            this.InputAddLoaclIP.Size = new System.Drawing.Size(227, 21);
             this.InputAddLoaclIP.TabIndex = 2;
             this.toolTip1.SetToolTip(this.InputAddLoaclIP, "双击填入 127.0.0.1");
             this.InputAddLoaclIP.DoubleClick += new System.EventHandler(this.InputAddLoaclIP_DoubleClick);
@@ -223,16 +237,16 @@
             // 
             this.InputAddLoaclPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputAddLoaclPort.Location = new System.Drawing.Point(116, 53);
+            this.InputAddLoaclPort.Location = new System.Drawing.Point(116, 50);
             this.InputAddLoaclPort.Name = "InputAddLoaclPort";
-            this.InputAddLoaclPort.Size = new System.Drawing.Size(231, 21);
+            this.InputAddLoaclPort.Size = new System.Drawing.Size(227, 21);
             this.InputAddLoaclPort.TabIndex = 1;
             this.toolTip1.SetToolTip(this.InputAddLoaclPort, "支持范围端口格式如：80-88,443");
             // 
             // AddItem
             // 
             this.AddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddItem.Location = new System.Drawing.Point(221, 258);
+            this.AddItem.Location = new System.Drawing.Point(217, 323);
             this.AddItem.Name = "AddItem";
             this.AddItem.Size = new System.Drawing.Size(75, 23);
             this.AddItem.TabIndex = 7;
@@ -243,7 +257,7 @@
             // CancelAdd
             // 
             this.CancelAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelAdd.Location = new System.Drawing.Point(308, 258);
+            this.CancelAdd.Location = new System.Drawing.Point(304, 323);
             this.CancelAdd.Name = "CancelAdd";
             this.CancelAdd.Size = new System.Drawing.Size(75, 23);
             this.CancelAdd.TabIndex = 8;
@@ -255,7 +269,7 @@
             // 
             this.DeleteItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteItem.ForeColor = System.Drawing.Color.Red;
-            this.DeleteItem.Location = new System.Drawing.Point(13, 258);
+            this.DeleteItem.Location = new System.Drawing.Point(13, 323);
             this.DeleteItem.Name = "DeleteItem";
             this.DeleteItem.Size = new System.Drawing.Size(75, 23);
             this.DeleteItem.TabIndex = 9;
@@ -270,11 +284,70 @@
             this.toolTip1.InitialDelay = 100;
             this.toolTip1.ReshowDelay = 20;
             // 
+            // InputAddSK
+            // 
+            this.InputAddSK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputAddSK.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.InputAddSK.Location = new System.Drawing.Point(116, 166);
+            this.InputAddSK.Name = "InputAddSK";
+            this.InputAddSK.Size = new System.Drawing.Size(227, 21);
+            this.InputAddSK.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.InputAddSK, "当端口为范围格式时，将自动补全 range:");
+            // 
+            // AddSK
+            // 
+            this.AddSK.AutoSize = true;
+            this.AddSK.Location = new System.Drawing.Point(77, 170);
+            this.AddSK.Name = "AddSK";
+            this.AddSK.Size = new System.Drawing.Size(17, 12);
+            this.AddSK.TabIndex = 11;
+            this.AddSK.Text = "SK";
+            // 
+            // AddRole
+            // 
+            this.AddRole.AutoSize = true;
+            this.AddRole.Location = new System.Drawing.Point(238, 277);
+            this.AddRole.Name = "AddRole";
+            this.AddRole.Size = new System.Drawing.Size(0, 12);
+            this.AddRole.TabIndex = 13;
+            // 
+            // InputAddServerName
+            // 
+            this.InputAddServerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputAddServerName.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.InputAddServerName.Location = new System.Drawing.Point(116, 199);
+            this.InputAddServerName.Name = "InputAddServerName";
+            this.InputAddServerName.Size = new System.Drawing.Size(227, 21);
+            this.InputAddServerName.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.InputAddServerName, "当端口为范围格式时，将自动补全 range:");
+            // 
+            // AddServerNmae
+            // 
+            this.AddServerNmae.AutoSize = true;
+            this.AddServerNmae.Location = new System.Drawing.Point(23, 203);
+            this.AddServerNmae.Name = "AddServerNmae";
+            this.AddServerNmae.Size = new System.Drawing.Size(71, 12);
+            this.AddServerNmae.TabIndex = 15;
+            this.AddServerNmae.Text = "Server_Name";
+            // 
+            // CheckAddRoleVisitor
+            // 
+            this.CheckAddRoleVisitor.AutoSize = true;
+            this.CheckAddRoleVisitor.Location = new System.Drawing.Point(233, 273);
+            this.CheckAddRoleVisitor.Name = "CheckAddRoleVisitor";
+            this.CheckAddRoleVisitor.Size = new System.Drawing.Size(90, 16);
+            this.CheckAddRoleVisitor.TabIndex = 16;
+            this.CheckAddRoleVisitor.Text = "RoleVisitor";
+            this.CheckAddRoleVisitor.UseVisualStyleBackColor = true;
+            this.CheckAddRoleVisitor.CheckedChanged += new System.EventHandler(this.CheckAddRoleVisitor_CheckedChanged);
+            // 
             // AddItemDlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 292);
+            this.ClientSize = new System.Drawing.Size(391, 357);
             this.Controls.Add(this.DeleteItem);
             this.Controls.Add(this.CancelAdd);
             this.Controls.Add(this.AddItem);
@@ -314,5 +387,11 @@
         private System.Windows.Forms.CheckBox CheckAddUseEncryption;
         private System.Windows.Forms.Label AddTranOpt;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox InputAddServerName;
+        private System.Windows.Forms.Label AddServerNmae;
+        private System.Windows.Forms.Label AddRole;
+        private System.Windows.Forms.TextBox InputAddSK;
+        private System.Windows.Forms.Label AddSK;
+        private System.Windows.Forms.CheckBox CheckAddRoleVisitor;
     }
 }

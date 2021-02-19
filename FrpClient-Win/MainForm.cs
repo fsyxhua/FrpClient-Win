@@ -108,6 +108,9 @@ namespace FrpClient_Win
                 item.SubItems.Add(info.strDomain);
                 item.SubItems.Add(info.strUseEncryption.ToString().ToLower());
                 item.SubItems.Add(info.strUseCompression.ToString().ToLower());
+                item.SubItems.Add(info.strRole.ToString());
+                item.SubItems.Add(info.strServerName.ToString());
+                item.SubItems.Add(info.strSk.ToString());
 
                 ServerList.Items.Add(item);
             }

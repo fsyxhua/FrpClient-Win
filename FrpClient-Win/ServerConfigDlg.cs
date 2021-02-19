@@ -21,7 +21,7 @@ namespace FrpClient_Win
             DB.Instance().cServerinfo.strIp = FrpServerIp.Text;
             DB.Instance().cServerinfo.nPort = Convert.ToInt32(FrpServerPort.Text);
             DB.Instance().cServerinfo.strToken = FrpToken.Text;
-            DB.Instance().cServerinfo.strUser = FrpUser.Text;
+            DB.Instance().cServerinfo.strProtocol = InputServerProtocol.SelectedItem.ToString();
             DB.Instance().cServerinfo.nAdminPort = Convert.ToInt32(FrpAdminPort.Text);
 
             DB.Instance().SaveConfig();
@@ -33,8 +33,8 @@ namespace FrpClient_Win
             //初始化显示
             FrpServerIp.Text = DB.Instance().cServerinfo.strIp;
             FrpServerPort.Text = DB.Instance().cServerinfo.nPort.ToString();
-            FrpToken.Text = DB.Instance().cServerinfo.strToken;
-            FrpUser.Text = DB.Instance().cServerinfo.strUser;
+            FrpToken.Text = DB.Instance().cServerinfo.strToken;           
+            InputServerProtocol.SelectedIndex = InputServerProtocol.FindStringExact(DB.Instance().cServerinfo.strProtocol);
             FrpAdminPort.Text = DB.Instance().cServerinfo.nAdminPort.ToString();
             if(DB.Instance().cServerinfo.nAdminPort > 0) {
                 FrpAdminPort.Enabled = FrpAdmin.Checked = true;

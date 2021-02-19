@@ -23,6 +23,9 @@ namespace FrpClient_Win
             cNewItemInfo.strSectionName = (Regex.IsMatch(InputAddLoaclPort.Text+InputAddRemotePort.Text, @"[,-]") && !Regex.IsMatch(InputAddSectionName.Text, @"^range:.*")) ? ("range:" + InputAddSectionName.Text) : InputAddSectionName.Text;
             cNewItemInfo.strUseEncryption = CheckAddUseEncryption.Checked;
             cNewItemInfo.strUseCompression = CheckAddUseCompression.Checked;
+            cNewItemInfo.strRole = CheckAddRoleVisitor.Checked?"visitor":"";
+            cNewItemInfo.strServerName = InputAddServerName.Text;
+            cNewItemInfo.strSk = InputAddSK.Text;
 
             DB.Instance().AddItem(cNewItemInfo);
             cNewItemInfo = null;
@@ -53,6 +56,16 @@ namespace FrpClient_Win
             InputAddDomain.Text = cNewItemInfo.strDomain;
             CheckAddUseEncryption.Checked = cNewItemInfo.strUseEncryption;
             CheckAddUseCompression.Checked = cNewItemInfo.strUseCompression;
+            if (cNewItemInfo.strRole == "visitor")
+            {
+                CheckAddRoleVisitor.Checked = true;
+            }
+            else
+            {
+                CheckAddRoleVisitor.Checked = false;
+            }
+            InputAddServerName.Text = cNewItemInfo.strServerName;
+            InputAddSK.Text = cNewItemInfo.strSk;
             InputAddSectionName.Text = cNewItemInfo.strSectionName;
         }
 
@@ -70,6 +83,43 @@ namespace FrpClient_Win
 
         private void InputAddRemotePort_DoubleClick(object sender, EventArgs e) {
             InputAddRemotePort.Text = InputAddLoaclPort.Text;
+        }
+
+        private void InputAddType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (InputAddType.SelectedItem.ToString() == "stcp")
+            {
+                InputAddSK.Enabled = true;
+                InputAddServerName.Enabled = CheckAddRoleVisitor.Checked;
+                CheckAddRoleVisitor.Enabled = true;
+                InputAddRemotePort.Enabled = false;
+                InputAddDomain.Enabled = false;
+
+            }
+            else if (InputAddType.SelectedItem.ToString() == "http" || InputAddType.SelectedItem.ToString() == "https")
+            {
+                InputAddDomain.Enabled = true;
+                InputAddSK.Enabled = false;
+                InputAddServerName.Enabled = false;
+                CheckAddRoleVisitor.Enabled = false;
+                InputAddRemotePort.Enabled = false;
+            }
+            else
+            {
+                InputAddDomain.Enabled = false;
+                InputAddSK.Enabled = false;
+                InputAddServerName.Enabled = false;
+                CheckAddRoleVisitor.Enabled = false;
+                InputAddRemotePort.Enabled = true;
+            }
+        }
+
+        private void CheckAddRoleVisitor_CheckedChanged(object sender, EventArgs e)
+        {
+            if(InputAddType.SelectedItem.ToString() == "stcp")
+            {
+                InputAddServerName.Enabled = CheckAddRoleVisitor.Checked;
+            }
         }
     }
 }

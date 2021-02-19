@@ -42,6 +42,9 @@
             this.host = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.use_encryption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.use_compression = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.role = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.server_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sk = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ServerConfig = new System.Windows.Forms.Button();
             this.AddItem = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -110,7 +113,10 @@
             this.server_port,
             this.host,
             this.use_encryption,
-            this.use_compression});
+            this.use_compression,
+            this.role,
+            this.server_name,
+            this.sk});
             this.ServerList.FullRowSelect = true;
             this.ServerList.GridLines = true;
             this.ServerList.HideSelection = false;
@@ -126,39 +132,56 @@
             // name
             // 
             this.name.Text = "标签";
-            this.name.Width = 120;
+            this.name.Width = 92;
             // 
             // type
             // 
             this.type.Text = "类型";
+            this.type.Width = 54;
             // 
             // local_port
             // 
             this.local_port.Text = "本地端口";
-            this.local_port.Width = 80;
+            this.local_port.Width = 59;
             // 
             // local_ip
             // 
             this.local_ip.Text = "本地IP";
-            this.local_ip.Width = 120;
+            this.local_ip.Width = 97;
             // 
             // server_port
             // 
             this.server_port.Text = "远程端口";
-            this.server_port.Width = 80;
+            this.server_port.Width = 59;
             // 
             // host
             // 
             this.host.Text = "域名";
-            this.host.Width = 180;
+            this.host.Width = 92;
             // 
             // use_encryption
             // 
             this.use_encryption.Text = "加密";
+            this.use_encryption.Width = 44;
             // 
             // use_compression
             // 
             this.use_compression.Text = "压缩";
+            this.use_compression.Width = 48;
+            // 
+            // role
+            // 
+            this.role.Text = "Role";
+            // 
+            // server_name
+            // 
+            this.server_name.Text = "Server_Name";
+            this.server_name.Width = 76;
+            // 
+            // sk
+            // 
+            this.sk.Text = "sk";
+            this.sk.Width = 72;
             // 
             // ServerConfig
             // 
@@ -298,6 +321,9 @@
         private System.Windows.Forms.ToolStripMenuItem RestartSysService;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem StopSysService;
+        private System.Windows.Forms.ColumnHeader role;
+        private System.Windows.Forms.ColumnHeader server_name;
+        private System.Windows.Forms.ColumnHeader sk;
     }
 }
 

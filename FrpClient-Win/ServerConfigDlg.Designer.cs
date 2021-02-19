@@ -31,7 +31,8 @@
             this.SaveServerConfig = new System.Windows.Forms.Button();
             this.CancelConfig = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.FrpUser = new System.Windows.Forms.TextBox();
+            this.FrpAdminPort = new System.Windows.Forms.TextBox();
+            this.FrpAdmin = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.FrpToken = new System.Windows.Forms.TextBox();
             this.FrpServerPort = new System.Windows.Forms.TextBox();
@@ -39,8 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.FrpAdmin = new System.Windows.Forms.CheckBox();
-            this.FrpAdminPort = new System.Windows.Forms.TextBox();
+            this.InputServerProtocol = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,9 +71,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.InputServerProtocol);
             this.groupBox1.Controls.Add(this.FrpAdminPort);
             this.groupBox1.Controls.Add(this.FrpAdmin);
-            this.groupBox1.Controls.Add(this.FrpUser);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.FrpToken);
             this.groupBox1.Controls.Add(this.FrpServerPort);
@@ -88,23 +88,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "通用参数";
             // 
-            // FrpUser
+            // FrpAdminPort
             // 
-            this.FrpUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.FrpAdminPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FrpUser.Location = new System.Drawing.Point(118, 126);
-            this.FrpUser.Name = "FrpUser";
-            this.FrpUser.Size = new System.Drawing.Size(183, 21);
-            this.FrpUser.TabIndex = 7;
+            this.FrpAdminPort.Enabled = false;
+            this.FrpAdminPort.Location = new System.Drawing.Point(234, 157);
+            this.FrpAdminPort.Name = "FrpAdminPort";
+            this.FrpAdminPort.Size = new System.Drawing.Size(67, 21);
+            this.FrpAdminPort.TabIndex = 9;
+            this.FrpAdminPort.Text = "7400";
+            // 
+            // FrpAdmin
+            // 
+            this.FrpAdmin.AutoSize = true;
+            this.FrpAdmin.Location = new System.Drawing.Point(24, 161);
+            this.FrpAdmin.Name = "FrpAdmin";
+            this.FrpAdmin.Size = new System.Drawing.Size(204, 16);
+            this.FrpAdmin.TabIndex = 8;
+            this.FrpAdmin.Text = "开启客户端面板（热加载），端口";
+            this.FrpAdmin.UseVisualStyleBackColor = true;
+            this.FrpAdmin.CheckedChanged += new System.EventHandler(this.FrpAdmin_CheckedChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 130);
+            this.label4.Location = new System.Drawing.Point(55, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 6;
-            this.label4.Text = "用户标识符";
+            this.label4.Text = "协议";
             // 
             // FrpToken
             // 
@@ -160,27 +173,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "frp服务器IP";
             // 
-            // FrpAdmin
+            // InputServerProtocol
             // 
-            this.FrpAdmin.AutoSize = true;
-            this.FrpAdmin.Location = new System.Drawing.Point(24, 161);
-            this.FrpAdmin.Name = "FrpAdmin";
-            this.FrpAdmin.Size = new System.Drawing.Size(204, 16);
-            this.FrpAdmin.TabIndex = 8;
-            this.FrpAdmin.Text = "开启客户端面板（热加载），端口";
-            this.FrpAdmin.UseVisualStyleBackColor = true;
-            this.FrpAdmin.CheckedChanged += new System.EventHandler(this.FrpAdmin_CheckedChanged);
-            // 
-            // FrpAdminPort
-            // 
-            this.FrpAdminPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.InputServerProtocol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FrpAdminPort.Enabled = false;
-            this.FrpAdminPort.Location = new System.Drawing.Point(234, 157);
-            this.FrpAdminPort.Name = "FrpAdminPort";
-            this.FrpAdminPort.Size = new System.Drawing.Size(67, 21);
-            this.FrpAdminPort.TabIndex = 9;
-            this.FrpAdminPort.Text = "7400";
+            this.InputServerProtocol.FormattingEnabled = true;
+            this.InputServerProtocol.Items.AddRange(new object[] {
+            "tcp",
+            "websocket"});
+            this.InputServerProtocol.Location = new System.Drawing.Point(118, 127);
+            this.InputServerProtocol.Name = "InputServerProtocol";
+            this.InputServerProtocol.Size = new System.Drawing.Size(183, 20);
+            this.InputServerProtocol.TabIndex = 10;
             // 
             // ServerConfigDlg
             // 
@@ -214,9 +218,9 @@
         private System.Windows.Forms.TextBox FrpToken;
         private System.Windows.Forms.TextBox FrpServerPort;
         private System.Windows.Forms.TextBox FrpServerIp;
-        private System.Windows.Forms.TextBox FrpUser;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox FrpAdmin;
         private System.Windows.Forms.TextBox FrpAdminPort;
+        private System.Windows.Forms.ComboBox InputServerProtocol;
     }
 }
